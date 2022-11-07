@@ -116,8 +116,9 @@ const getProductsFromLiked = async (req, res) => {
         };
 
         const likedProducts = await UserLike.findAll({where: {UserId}, include: [{model: Product}], limit, offset});
+        const likedProductsLength = await UserLike.findAll({where: {UserId}});
 
-        res.json(likedProducts);
+        res.json({likedProducts: likedProducts, contentLength: likedProductsLength.length});
     } catch (error) {
         res.json({message: "Ошибка получения понравившихся продуктов"});
     };
