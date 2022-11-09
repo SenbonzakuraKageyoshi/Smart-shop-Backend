@@ -21,7 +21,7 @@ const getProducts = async (req, res) => {
 
 const getProduct = async (req, res) => {
     try {
-        const {id} = req.body;
+        const { id } = req.body;
 
         const product = await Product.findOne({where: {id}});
         

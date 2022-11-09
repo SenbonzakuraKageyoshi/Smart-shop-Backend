@@ -22,9 +22,9 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const {userEmail, userNumber, userPassword} = req.body;
+        const {userEmail, userPassword} = req.body;
 
-        const user = await User.findOne({where: {userEmail, userNumber}});
+        const user = await User.findOne({where: {userEmail}});
 
         if(!user){
             return res.status(404).json({message: 'Неверный логин, телефон, или пароль'});
