@@ -114,7 +114,7 @@ const getProductsFromLiked = async (req, res) => {
 
             return res.json(userLikes);
         };
-
+        
         const likedProducts = await UserLike.findAll({where: {UserId}, include: [{model: Product}], limit, offset});
         const likedProductsLength = await UserLike.findAll({where: {UserId}});
 
