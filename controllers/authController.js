@@ -60,7 +60,7 @@ const getMe = async (req, res) => {
             return res.status(404).json({message: 'Пользователь не найден'})
         };
 
-        res.json({...user.dataValues});
+        res.json({...user.dataValues, token});
     } catch (error) {
         res.status(404).json({message: "Не удалось получить данные о пользователе, пожалуйста, попробуйте позже"}); 
     };

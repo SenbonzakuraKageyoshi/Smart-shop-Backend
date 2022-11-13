@@ -97,14 +97,15 @@ const removeProductFromLiked = async (req, res) => {
 
 const getProductsFromLiked = async (req, res) => {
     try {
-        let { page, isObject, UserId } = req.query;
+        let { page, isObject, currentUserId } = req.query;
+        const { UserId } = req.body;
 
         page = page || 1;
         const limit = 20;
         let offset = page * limit - limit;
 
         if(isObject){
-            const likedProducts = await UserLike.findAll({where: {UserId}});
+            const likedProducts = await UserLike.findAll({where: {UserId: currentUserId}});
 
             const userLikes = {};
 
